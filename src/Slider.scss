@@ -1,0 +1,42 @@
+.slider-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.controls {
+		display: flex;
+		align-items: center;
+
+		.control {
+			padding: 5px;
+			border: 2px solid black;
+			margin: 5px;
+			cursor: pointer;
+		}
+	}
+
+	.slider-line {
+		position: relative;
+		width: 700px;
+		height: 2px;
+		background-color: black;
+		border: 5px solid white;
+		margin: 5px;
+		cursor: pointer;
+
+		.slider-position {
+			position: absolute;
+
+			.slider-dot {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: red;
+				left: -10px;
+				top: -10px;
+				border: 2px solid black;
+			}
+		}
+	}
+}

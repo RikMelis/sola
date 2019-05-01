@@ -1,0 +1,19 @@
+.map-container {
+  	position: relative;
+
+	.current-position {
+		position: absolute;
+
+		img.runner {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			background: lightblue;
+			color: white;
+			border-radius: 50%;
+			top: -20px;
+			left: -20px;
+			border: 2px solid white;
+		}
+	}
+}

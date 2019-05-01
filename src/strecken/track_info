@@ -1,0 +1,210 @@
+
+all
+center: {
+	lat: 47.35337,
+	lon: 8.56805,
+},
+swCorner: {
+	lat: 47.27480,
+	lon: 8.43208,
+},
+neCorner: {
+	lat: 47.43194,
+	lon: 8.70403,
+},
+
+1
+center: {
+	lat: 47.40406,
+	lon: 8.52034,
+},
+swCorner: {
+	lat: 47.39855,
+	lon: 8.50987,
+},
+neCorner: {
+	lat: 47.40956,
+	lon: 8.53081,
+},
+
+2
+center: {
+	lat: 47.40069,
+	lon: 8.47975,
+},
+swCorner: {
+	lat: 47.37718,
+	lon: 8.44347,
+},
+neCorner: {
+	lat: 47.42421,
+	lon: 8.51603,
+},
+
+3
+center: {
+	lat: 47.36644,
+	lon: 8.47856,
+},
+swCorner: {
+	lat: 47.34939,
+	lon: 8.45340,
+},
+neCorner: {
+	lat: 47.38350,
+	lon: 8.50372,
+},
+
+4
+center: {
+	lat: 47.32996,
+	lon: 8.49918,
+},
+swCorner: {
+	lat: 47.30580,
+	lon: 8.46356,
+},
+neCorner: {
+	lat: 47.35413,
+	lon: 8.53480,
+},
+
+5
+center: {
+	lat: 47.34304,
+	lon: 8.48529,
+},
+swCorner: {
+	lat: 47.29913,
+	lon: 8.42055,
+},
+neCorner: {
+	lat: 47.38694,
+	lon: 8.55003,
+},
+
+6
+center: {
+	lat: 47.39592,
+	lon: 8.48011,
+},
+swCorner: {
+	lat: 47.37720,
+	lon: 8.44431,
+},
+neCorner: {
+	lat: 47.41464,
+	lon: 8.51592,
+},
+
+7
+center: {
+	lat: 47.40274,
+	lon: 8.52818,
+},
+swCorner: {
+	lat: 47.39523,
+	lon: 8.50892,
+},
+neCorner: {
+	lat: 47.41025,
+	lon: 8.54744,
+},
+
+8
+center: {
+	lat: 47.38984,
+	lon: 8.56412,
+},
+swCorner: {
+	lat: 47.38073,
+	lon: 8.54369,
+},
+neCorner: {
+	lat: 47.39896,
+	lon: 8.58456,
+},
+
+9
+center: {
+	lat: 47.35430,
+	lon: 8.61132,
+},
+swCorner: {
+	lat: 47.32210,
+	lon: 8.56383,
+},
+neCorner: {
+	lat: 47.38650,
+	lon: 8.65881,
+},
+
+10
+center: {
+	lat: 47.31385,
+	lon: 8.66518,
+},
+swCorner: {
+	lat: 47.30013,
+	lon: 8.64111,
+},
+neCorner: {
+	lat: 47.32758,
+	lon: 8.68924,
+},
+
+11
+center: {
+	lat: 47.30953,
+	lon: 8.65594,
+},
+swCorner: {
+	lat: 47.28222,
+	lon: 8.61569,
+},
+neCorner: {
+	lat: 47.33685,
+	lon: 8.69619,
+},
+
+12
+center: {
+	lat: 47.34947,
+	lon: 8.61422,
+},
+swCorner: {
+	lat: 47.33158,
+	lon: 8.58784,
+},
+neCorner: {
+	lat: 47.36737,
+	lon: 8.64061,
+},
+
+13
+center: {
+	lat: 47.37299,
+	lon: 8.58658,
+},
+swCorner: {
+	lat: 47.36194,
+	lon: 8.57027,
+},
+neCorner: {
+	lat: 47.38404,
+	lon: 8.60288,
+},
+
+14
+center: {
+	lat: 47.39111,
+	lon: 8.56404,
+},
+swCorner: {
+	lat: 47.38059,
+	lon: 8.54227,
+},
+neCorner: {
+	lat: 47.40162,
+	lon: 8.58581,
+},
