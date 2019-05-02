@@ -15,27 +15,64 @@
 		}
 	}
 
-	.slider-line {
+	.profile-slider {
+		font-size: 12px;
+		white-space: nowrap;
+		cursor: ew-resize;
 		position: relative;
-		width: 700px;
-		height: 2px;
-		background-color: black;
-		border: 5px solid white;
-		margin: 5px;
-		cursor: pointer;
+		margin-bottom: 25px;
+		margin-top: 60px;
+		border-bottom: 1px solid black;
 
 		.slider-position {
 			position: absolute;
+			background-color: black;
+			width: 1px;
+			top: -50px;
+			bottom: 0;
 
-			.slider-dot {
+			.slider-value {
 				position: absolute;
-				width: 20px;
-				height: 20px;
-				border-radius: 50%;
-				background-color: red;
-				left: -10px;
-				top: -10px;
-				border: 2px solid black;
+				left: 5px;
+			}
+		}
+
+		.km-point {
+			position: absolute;
+			width: 1px;
+			height: 20px;
+			background-color: black;
+
+			.km-label {
+				position: absolute;
+				bottom: 0;
+				left: 5px;
+			}
+		}
+
+		.y-axis {
+			position: absolute;
+			width: 1px;
+			top: 0;
+			bottom: 0;
+			background-color: black;
+
+			.y-point {
+				position: absolute;
+
+				.y-line {
+					position: absolute;
+					height: 1px;
+					width: 10px;
+					background-color: black;
+					right: 0;
+				}
+
+				.y-label {
+					position: absolute;
+					right: 14px;
+					top: -8px;
+				}
 			}
 		}
 	}

@@ -1,5 +1,10 @@
 .map-container {
   	position: relative;
+  	margin-bottom: 20px;
+
+  	img.map {
+  		border: 1px solid black;
+  	}
 
 	.current-position {
 		position: absolute;

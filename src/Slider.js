@@ -1,5 +1,14 @@
 import React from 'react';
+import Profile from './Profile.js';
 import './Slider.scss';
+
+function convertMinsToHrsMins(mins) {
+    let h = Math.floor(mins / 60);
+    let m = Math.floor(mins % 60);
+    h = h < 10 ? '0' + h : h;
+    m = m < 10 ? '0' + m : m;
+    return `${h}:${m}`;
+}
 
 export default class Slider extends React.Component {
 	constructor(props) {
@@ -11,28 +20,25 @@ export default class Slider extends React.Component {
 		};
 	}
 
-	handleMouseDownOnDot() {
+	handleMouseDownOnDot(event) {
+		this.move(event);
 		this.setState({dragging: true});
-	}
-
-	handleMouseDownOnLine(event) {
-		const minPixel = this.sliderBar.getBoundingClientRect().left;
-		const widthPixel = this.sliderBar.getBoundingClientRect().width;
-
-		const newValue = (event.clientX - minPixel) / widthPixel;
-		this.changeValue(newValue);
 	}
 
 	mousemoveListener(event) {
 		if (this.state.dragging) {
-			const minPixel = this.sliderBar.getBoundingClientRect().left;
-			const widthPixel = this.sliderBar.getBoundingClientRect().width;
-
-			const newValue = (event.clientX - minPixel) / widthPixel;
-			this.changeValue(newValue);
-			event.preventDefault();
-  			event.stopPropagation();
+			this.move(event);
 		}
+	}
+
+	move(event) {
+		const minPixel = this.sliderLine.getBoundingClientRect().left;
+		const widthPixel = this.sliderLine.getBoundingClientRect().width;
+
+		const newValue = (event.clientX - minPixel) / widthPixel;
+		this.changeValue(newValue);
+		event.preventDefault();
+		event.stopPropagation();
 	}
 
 	mouseupListener() {
@@ -75,20 +81,51 @@ export default class Slider extends React.Component {
 	simulateStep() {
 		if (this.state.simulating) {
 			if (this.props.value < 1) {
-				this.changeValue(this.props.value + 0.01);
-				setTimeout(() => this.simulateStep(), 100);
+				this.changeValue(this.props.value + 0.001);
+				setTimeout(() => this.simulateStep(), 10);
 			} else {
 				this.setState({simulating: false});
 			}
 		}
 	}
 
-	stopSimulation() {
-	}
-
 	render() {
+		const {
+			value,
+			strecke,
+			currentPosition
+		} = this.props;
+
+		const {
+			distance,
+			pace,
+			timeOffset,
+		} = strecke;
+
+		const currentGradient = Math.round(currentPosition['grad'] / 10);
+
 		return (
 			<div className={'slider-container'}>
+				<div
+					className={'profile-slider'}
+					ref={bar => { this.sliderLine = bar; }}
+					onMouseDown={event => this.handleMouseDownOnDot(event)}
+					>
+	                <Profile strecke={strecke}/>
+					<div
+						className={'slider-position'}
+						style={{left: `${100 * value}%`}}
+					>
+						<div className={'slider-value'}>
+				        	<div>{`${(value * distance).toFixed(2)} km`}</div>
+				        	<div>{convertMinsToHrsMins(timeOffset + pace * currentPosition['dis'])}</div>
+				        	<div>
+				        		{`↕ ${Math.round(currentPosition['alt'])} m`}
+				        		{` (${currentGradient}%)`}
+				        	</div>
+				        </div>
+				    </div>
+			    </div>
 				<div className={'controls'}>
 		          	<div className={'control'} onClick={() => this.decreaseIndex()}>{'<'}</div>
 					<div className={'control'} onClick={() => this.triggerSimulation()}>
@@ -96,26 +133,6 @@ export default class Slider extends React.Component {
 					</div>
 		          	<div className={'control'} onClick={() => this.increaseIndex()}>{'>'}</div>
 				</div>
-	        	<div className={'slider'}>
-					<div
-						className={'slider-line'}
-						ref={bar => { this.sliderBar = bar; }}
-						onMouseDown={event => this.handleMouseDownOnLine(event)}
-					>
-						<div
-							className={'slider-position'}
-							style={{left: `${100 * this.props.value}%`}}
-						>
-							<div
-								className={'slider-dot'}
-								onMouseDown={event => this.handleMouseDownOnDot(event)}
-							/>
-						</div>
-					</div>
-		        </div>
-		        <div className={'slider-value'}>
-		        	{Math.round(100 * this.props.value)}
-		        </div>
 		    </div>
 		);
 	}

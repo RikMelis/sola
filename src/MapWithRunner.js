@@ -27,7 +27,7 @@ export default class MapWithRunner extends React.Component {
 
 		return (
 			<div className={'map-container'}>
-				<img src={require(`./maps/map${lookupIndex}.png`)} alt={'map'}/>
+				<img className={'map'} src={require(`./maps/map${lookupIndex}.png`)} alt={'map'}/>
 				<div className={'current-position'} style={currentPositionStyle}>
 					<img 
 						className={'runner'}
