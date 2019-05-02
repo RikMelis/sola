@@ -4,28 +4,21 @@ import MapWithRunner from './MapWithRunner.js';
 import './Strecke.scss';
 
 export default class Strecke extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: 0,
-        };
-    }
-
     render() {
         const {
             strecke,
+            positionID,
+            changePositionID,
         } = this.props;
 
         const {
             runner, 
             track,
-            distance,
             pace,
+            stepToTrackIndex,
         } = strecke;
 
-        const positionIndex = Math.round(this.state.value * (track.length - 1));
-        const currentPosition = track[positionIndex];
+        const currentPosition = track[stepToTrackIndex[positionID]];
 
         return (
             <div className={'strecke'}>
@@ -33,8 +26,8 @@ export default class Strecke extends React.Component {
                     {`${runner} - ${pace} min/km`}
                 </div>
                 <Slider
-                    value={this.state.value}
-                    onChange={value => this.setState({value: value})}
+                    value={positionID}
+                    changePositionID={changePositionID}
                     strecke={strecke}
                     currentPosition={currentPosition}
                 />

@@ -35,7 +35,7 @@ export default class Slider extends React.Component {
 		const minPixel = this.sliderLine.getBoundingClientRect().left;
 		const widthPixel = this.sliderLine.getBoundingClientRect().width;
 
-		const newValue = (event.clientX - minPixel) / widthPixel;
+		const newValue = 1000 * (event.clientX - minPixel) / widthPixel;
 		this.changeValue(newValue);
 		event.preventDefault();
 		event.stopPropagation();
@@ -53,17 +53,17 @@ export default class Slider extends React.Component {
 	}
 
 	decreaseIndex() {
-		this.changeValue(this.props.value - 0.01);
+		this.changeValue(this.props.value - 10);
 	}
 
 	increaseIndex() {
-		this.changeValue(this.props.value + 0.01);
+		this.changeValue(this.props.value + 10);
 	}
 
 	changeValue(newValue) {
-		const correctedValue = Math.min(1, Math.max(0, newValue));
+		const correctedValue = Math.min(1000, Math.max(0, Math.round(newValue)));
 		if (correctedValue !== this.props.value) {
-			this.props.onChange(correctedValue);
+			this.props.changePositionID(correctedValue);
 		}
 	}
 
@@ -80,8 +80,8 @@ export default class Slider extends React.Component {
 
 	simulateStep() {
 		if (this.state.simulating) {
-			if (this.props.value < 1) {
-				this.changeValue(this.props.value + 0.001);
+			if (this.props.value < 1000) {
+				this.changeValue(this.props.value + 1);
 				setTimeout(() => this.simulateStep(), 10);
 			} else {
 				this.setState({simulating: false});
@@ -102,7 +102,7 @@ export default class Slider extends React.Component {
 			timeOffset,
 		} = strecke;
 
-		const currentGradient = Math.round(currentPosition['grad'] / 10);
+		const currentGradient = Math.round(currentPosition.grad / 10);
 
 		return (
 			<div className={'slider-container'}>
@@ -114,10 +114,10 @@ export default class Slider extends React.Component {
 	                <Profile strecke={strecke}/>
 					<div
 						className={'slider-position'}
-						style={{left: `${100 * value}%`}}
+						style={{left: `${value / 10}%`}}
 					>
 						<div className={'slider-value'}>
-				        	<div>{`${(value * distance).toFixed(2)} km`}</div>
+				        	<div>{`${(value * distance / 1000).toFixed(2)} km`}</div>
 				        	<div>{convertMinsToHrsMins(timeOffset + pace * currentPosition['dis'])}</div>
 				        	<div>
 				        		{`↕ ${Math.round(currentPosition['alt'])} m`}

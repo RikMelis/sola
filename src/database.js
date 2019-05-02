@@ -306,4 +306,20 @@ export const strecken = [
 ];
 
 strecken.forEach(s => { s.distance /= 1000; });
+
+export const STEPS = 1000;
+strecken.forEach(strecke => {
+    const stepSize = strecke.distance / STEPS;
+    let i = 0
+
+    strecke.stepToTrackIndex = Array.from(Array(STEPS)).map((_, index) => {
+        while (index * stepSize > strecke.track[i].dis) {
+            i += 1;
+        }
+
+        return i;
+    })
+
+    strecke.stepToTrackIndex.push(strecke.track.length - 1);
+});
 // strecken[0].track = [].concat(...strecken.slice(1).map(s => s.track));
