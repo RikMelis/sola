@@ -13,7 +13,6 @@ export default class MapWithRunner extends React.Component {
 			swCorner,
 			neCorner,
 			profilePicture,
-			runner,
 		} = strecke;
 
 		const currentRelativePosition = {

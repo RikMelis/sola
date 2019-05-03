@@ -1,13 +1,23 @@
 import React from 'react';
 import Profile from './Profile.js';
+import {UNCERTAINTY_RATE} from './App.js'
 import './Slider.scss';
 
-function convertMinsToHrsMins(mins) {
+function convertMinsToClock(mins) {
     let h = Math.floor(mins / 60);
     let m = Math.floor(mins % 60);
     h = h < 10 ? '0' + h : h;
     m = m < 10 ? '0' + m : m;
     return `${h}:${m}`;
+}
+
+export const convertMinsToHrsMins = (mins) => {
+    let h = Math.floor(mins / 60);
+    let m = Math.floor(mins % 60);
+    if (h > 0) {
+    	return `${h}h ${m}min`;
+    }
+    return `${m}min`;
 }
 
 export default class Slider extends React.Component {
@@ -18,6 +28,12 @@ export default class Slider extends React.Component {
 			simulating: false,
 			dragging: false,
 		};
+	}
+
+	componentWillUnmount() {
+		if (this.simulationTimer) {
+			clearTimeout(this.simulationTimer);
+		}
 	}
 
 	handleMouseDownOnDot(event) {
@@ -82,7 +98,7 @@ export default class Slider extends React.Component {
 		if (this.state.simulating) {
 			if (this.props.value < 1000) {
 				this.changeValue(this.props.value + 1);
-				setTimeout(() => this.simulateStep(), 10);
+				this.simulationTimer = setTimeout(() => this.simulateStep(), 10);
 			} else {
 				this.setState({simulating: false});
 			}
@@ -100,9 +116,15 @@ export default class Slider extends React.Component {
 			distance,
 			pace,
 			timeOffset,
+			isEstimate,
 		} = strecke;
 
 		const currentGradient = Math.round(currentPosition.grad / 10);
+
+		let uncertaintyInterval = strecke.uncertaintyInterval;
+		if (isEstimate) {
+			uncertaintyInterval += UNCERTAINTY_RATE * pace * currentPosition['dis'];
+		}
 
 		return (
 			<div className={'slider-container'}>
@@ -111,14 +133,18 @@ export default class Slider extends React.Component {
 					ref={bar => { this.sliderLine = bar; }}
 					onMouseDown={event => this.handleMouseDownOnDot(event)}
 					>
-	                <Profile strecke={strecke}/>
+	                <Profile strecke={strecke} sliderLineRef={this.sliderLine}/>
 					<div
 						className={'slider-position'}
 						style={{left: `${value / 10}%`}}
 					>
 						<div className={'slider-value'}>
 				        	<div>{`${(value * distance / 1000).toFixed(2)} km`}</div>
-				        	<div>{convertMinsToHrsMins(timeOffset + pace * currentPosition['dis'])}</div>
+				        	<div>
+				        		{convertMinsToClock(timeOffset + pace * currentPosition['dis'])}
+				        		{` (± ${convertMinsToHrsMins(uncertaintyInterval)})`}
+
+				        	</div>
 				        	<div>
 				        		{`↕ ${Math.round(currentPosition['alt'])} m`}
 				        		{` (${currentGradient}%)`}

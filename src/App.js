@@ -1,15 +1,24 @@
 import React from 'react';
 import Strecke from './Strecke.js';
-import {strecken} from './database.js';
+import {strecken as streckenData} from './database.js';
 import './App.scss';
+
+export const UNCERTAINTY_RATE = 0.15;
 
 const addTimesToStrecken = strecken => {
     strecken.forEach((strecke, index) => {
         if ('newStart' in strecke) {
             strecke.timeOffset = strecke.newStart;
+            strecke.uncertaintyInterval = 0
         } else {
             const prevStrecke = strecken[index - 1];
             strecke.timeOffset = prevStrecke.timeOffset + prevStrecke.pace * prevStrecke.distance;
+
+            strecke.uncertaintyInterval = prevStrecke.uncertaintyInterval
+            if (prevStrecke.isEstimate) {
+                // 10 percent uncertainty
+                strecke.uncertaintyInterval += UNCERTAINTY_RATE * prevStrecke.pace * prevStrecke.distance
+            }
         }
     })
     return strecken;
@@ -19,14 +28,52 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
 
-        addTimesToStrecken(strecken)
-
         this.state = {
             streckeID: 0,
-            strecken: strecken,
+            strecken: streckenData,
             positionID: 0,
             live: false,
         };
+
+        this.pollData();
+    }
+
+    pollData() {
+        this.reloadData();
+        // reload every minute
+        setTimeout(() => this.pollData(), 60000);
+    }
+
+    recalculateStreckenTimes() {
+        this.setState({
+            strecken: addTimesToStrecken(this.state.strecken),
+        })
+    }
+
+    reloadData() {
+        const options = {
+            method: 'GET',
+            url: 'https://sola2019-461b.restdb.io/rest/strecken',
+            headers: {
+                'cache-control': 'no-cache',
+                'x-apikey': '5ccb5a18aa6d1c0bac8c93bd' 
+            },
+        };
+
+        const request = require('request');
+
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error);
+
+            JSON.parse(body).forEach(d => {
+                const strecke = this.state.strecken.find(s => s.lookupIndex === d.name);
+                strecke._id = d._id;
+                strecke.pace = d.pace;
+                strecke.isEstimate = d.estimation;
+            });
+
+            this.recalculateStreckenTimes();
+        });
     }
 
     triggerLive() {
@@ -78,7 +125,7 @@ export default class App extends React.Component {
             positionID,
         } = this.state;
 
-        if (!this.state.live || (positionID === 1000 && streckeID === strecken.length - 1)) {
+        if (!live || (positionID === 1000 && streckeID === strecken.length - 1)) {
             this.stopLive();
         } else if (positionID === 1000) {
                 this.setState({
@@ -96,13 +143,13 @@ export default class App extends React.Component {
         return (
             <div className={'app'}>
                 <div className={'app-title'}>SOLA 2019</div>
-                <div
+                {false && <div
                     className={'live-button'}
                     onClick={() => this.triggerLive()}
                     style={{backgroundColor: this.state.live ? '#ffcc00' : 'white'}}
                     >
                     {this.state.live ? 'LIVE' : 'go live'}
-                </div>
+                </div>}
                 <div className={'strecke-selector'}>
                     {this.state.strecken.map((strecke, index) => 
                         <div
@@ -113,16 +160,21 @@ export default class App extends React.Component {
                                 positionID: 0,
                                 live: false,
                             })}
-                            style={{backgroundColor: index === this.state.streckeID ? 'grey' : 'white'}}
+                            style={{
+                                backgroundColor: index === this.state.streckeID ? 'lightgrey' : 'white',
+                                fontSize: index === this.state.streckeID ? '24px' : '12px'
+                            }}
                         >
                             {strecke.name}
                         </div>
                     )}
                 </div>
                 <Strecke
+                    key={`${this.state.streckeID}`}
                     strecke={this.state.strecken[this.state.streckeID]}
                     positionID={this.state.positionID}
                     changePositionID={id => this.setState({live: false, positionID: id})}
+                    recalculateStreckenTimes={() => this.recalculateStreckenTimes()}
                 />
             </div>
         );

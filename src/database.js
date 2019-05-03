@@ -25,7 +25,6 @@ export const strecken = [
         runner: 'Jule',
         distance: 3694.42101,
         newStart: 450,
-        pace: 5.2,
         center: {
             lat: 47.40406,
             lon: 8.52034,
@@ -45,7 +44,6 @@ export const strecken = [
         lookupIndex: '02',
         runner: 'Nicola',
         distance: 13709.13290,
-        pace: 5.2,
         center: {
             lat: 47.40069,
             lon: 8.47975,
@@ -65,7 +63,6 @@ export const strecken = [
         lookupIndex: '03',
         runner: 'Lucien',
         distance: 5914.47538,
-        pace: 6,
         center: {
             lat: 47.36644,
             lon: 8.47856,
@@ -85,7 +82,6 @@ export const strecken = [
         lookupIndex: '04',
         runner: 'Yannick',
         distance: 5976.27432,
-        pace: 5.2,
         center: {
             lat: 47.32996,
             lon: 8.49918,
@@ -105,7 +101,6 @@ export const strecken = [
         lookupIndex: '05',
         runner: 'Daan',
         distance: 14275.05614,
-        pace: 5.2,
         center: {
             lat: 47.34304,
             lon: 8.48529,
@@ -125,7 +120,6 @@ export const strecken = [
         lookupIndex: '06',
         runner: 'Philipp',
         distance: 10480.41255,
-        pace: 5.2,
         center: {
             lat: 47.39592,
             lon: 8.48011,
@@ -145,7 +139,6 @@ export const strecken = [
         lookupIndex: '07',
         runner: 'Aron',
         distance: 4500.67134,
-        pace: 5.2,
         center: {
             lat: 47.40274,
             lon: 8.52818,
@@ -165,7 +158,6 @@ export const strecken = [
         lookupIndex: '08',
         runner: 'Fabiano',
         distance: 6346.32480,
-        pace: 5.2,
         newStart: 750,
         center: {
             lat: 47.38984,
@@ -186,7 +178,6 @@ export const strecken = [
         lookupIndex: '09',
         runner: 'Janek',
         distance: 11184.81643,
-        pace: 5.2,
         center: {
             lat: 47.35430,
             lon: 8.61132,
@@ -206,7 +197,6 @@ export const strecken = [
         lookupIndex: '10',
         runner: 'Marie Lou',
         distance: 8485.94111,
-        pace: 5.2,
         center: {
             lat: 47.31385,
             lon: 8.66518,
@@ -226,7 +216,6 @@ export const strecken = [
         lookupIndex: '11',
         runner: 'Dominik',
         distance: 12952.91394,
-        pace: 5.2,
         center: {
             lat: 47.30953,
             lon: 8.65594,
@@ -246,7 +235,6 @@ export const strecken = [
         lookupIndex: '12',
         runner: 'Théoda',
         distance: 6924.80448,
-        pace: 5.2,
         center: {
             lat: 47.34947,
             lon: 8.61422,
@@ -266,7 +254,6 @@ export const strecken = [
         lookupIndex: '13',
         runner: 'Tomas',
         distance: 4793.96462,
-        pace: 5.2,
         newStart: 1005,
         center: {
             lat: 47.37299,
@@ -287,7 +274,6 @@ export const strecken = [
         lookupIndex: '14',
         runner: 'Rik',
         distance: 5439.91619,
-        pace: 4.1,
         center: {
             lat: 47.39111,
             lon: 8.56404,
@@ -301,7 +287,7 @@ export const strecken = [
             lon: 8.58581,
         },
         track: require('./strecken/strecke14.json'),
-        profilePicture: require('./profile_pictures/rik.jpeg'),
+        // profilePicture: require('./profile_pictures/rik.jpeg'),
     },
 ];
 

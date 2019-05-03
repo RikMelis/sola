@@ -4,6 +4,7 @@ export default class Profile extends React.Component {
 	render() {
 		const {
 			strecke,
+			sliderLineRef,
 		} = this.props;
 
 		const {
@@ -31,14 +32,17 @@ export default class Profile extends React.Component {
 			i += 100;
 		}
 
+		// const maxWidth = sliderLineRef ? sliderLineRef.getBoundingClientRect().width : 700;
+		const maxWidth = 700;
+
 		return (
 			<div>
-				<svg height={`${maxY - minY}`} width='700'>
+				<svg height={`${maxY - minY}`} width={'700'} viewBox={`0 0 700 ${maxY - minY}`} preserveAspectRatio={'none'}>
 					{track.slice(1).map((t, index) => {
 						const dis1 = t.dis;
 						const dis2 = track[index].dis;
-						const x1 = dis1 * 700 / distance;
-						const x2 = dis2 * 700 / distance;
+						const x1 = dis1 * maxWidth / distance;
+						const x2 = dis2 * maxWidth / distance;
 
 						const alt1 = t.alt;
 						const alt2 = track[index].alt

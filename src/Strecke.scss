@@ -1,5 +1,41 @@
 .strecke {
+	position: absolute;
+	left: 20px;
+	right: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.modal {
+	margin: auto;
+	margin-top: 150px;
+	width: 200px;
+	padding: 10px;
+	border: 1px solid black;
+	outline: none;
+	opacity: 1;
+}
+
+img.pencil {
+	width: 10px;
+}
+
+img.confirm {
+	width: 13px;
+}
+
+.pace {
+	display: flex;
+	align-items: center;
+
+	.button {
+		margin-left: 5px;
+		cursor: pointer;
+	}
+
+	input {
+		outline: none;
+		font-size: 14px;
+	}
 }
