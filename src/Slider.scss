@@ -24,7 +24,7 @@
 		position: relative;
 		margin-bottom: 25px;
 		margin-top: 60px;
-		border-bottom: 1px solid black;
+		// border-bottom: 1px solid black;
 
 		svg {
 			width: 100%;
@@ -42,6 +42,12 @@
 				position: absolute;
 				left: 5px;
 			}
+		}
+
+		.km-axis {
+			height: 1px;
+			background-color: black;
+			position: relative;
 		}
 
 		.km-point {
