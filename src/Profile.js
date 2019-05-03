@@ -31,9 +31,11 @@ export default class Profile extends React.Component {
 			i += 100;
 		}
 
+		const yRange = maxY - minY;
+
 		return (
 			<div>
-				<svg height={`${maxY - minY}`} width={'700'} viewBox={`0 0 700 ${maxY - minY}`} preserveAspectRatio={'none'}>
+				<svg height={`${yRange}`} width={'700'} viewBox={`0 0 700 ${maxY - minY}`} preserveAspectRatio={'none'}>
 					{track.slice(1).map((t, index) => {
 						const dis1 = t.dis;
 						const dis2 = track[index].dis;
@@ -59,7 +61,7 @@ export default class Profile extends React.Component {
 						return (
 							<polygon
 								key={index}
-								points={`${x1},500 ${x2},500 ${x2},${y2} ${x1},${y1}`}
+								points={`${x1},${yRange} ${x2},${yRange} ${x2},${y2} ${x1},${y1}`}
 								style={{fill: color, stroke: color}}
 							/>
 						);

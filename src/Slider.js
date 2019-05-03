@@ -11,7 +11,7 @@ const convertMinsToClock = (mins) => {
     return `${h}:${m}`;
 }
 
-export const convertMinsToHrsMins = (mins) => {
+const convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
     let m = Math.floor(mins % 60);
     if (h > 0) {

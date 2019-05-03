@@ -1,7 +1,22 @@
 import React from 'react';
-import Slider, {convertMinsToHrsMins} from './Slider.js';
+import Slider from './Slider.js';
 import MapWithRunner from './MapWithRunner.js';
 import './Strecke.scss';
+
+const convertMinsToHrsMinsSecs = (mins) => {
+    let h = Math.floor(mins / 60);
+    let m = Math.floor(mins % 60);
+    let s = Math.floor((100 * mins) % 100 / 100 * 60);
+
+    let result = `${s}sec`;
+    if (m > 0) {
+        result = `${m}min ${result}`
+    }
+    if (h > 0) {
+        result = `${h}h ${result}`;
+    }
+    return result;
+}
 
 export default class Strecke extends React.Component {
     render() {
@@ -27,7 +42,7 @@ export default class Strecke extends React.Component {
                 <div className={'info'}>
                     {runner}
                     <Pace strecke={strecke} recalculateStreckenTimes={recalculateStreckenTimes}/>
-                    <div>{convertMinsToHrsMins(pace * distance)}</div>
+                    <div>{convertMinsToHrsMinsSecs(pace * distance)}</div>
                 </div>
                 <Slider
                     value={positionID}
@@ -65,7 +80,7 @@ class Pace extends React.Component {
                 'x-apikey': '5ccb5a18aa6d1c0bac8c93bd',
                 'content-type': 'application/json'
             },
-            body: { pace: newValue },
+            body: {pace: newValue},
             json: true,
         };
 
@@ -122,6 +137,9 @@ class Pace extends React.Component {
 
         return (
             <div className={'pace'}>
+                {false && <div className={'estimation'}>
+                    <img alt={'plusminus'} src={require('./plusminus.png')}/>
+                </div>}
                 {`${pace} min/km`}
                 <div
                     className={'button'}
