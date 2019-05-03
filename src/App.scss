@@ -34,3 +34,35 @@
 	margin: 5px;
 	background-color: #ffcc00;
 }
+
+.legend {
+	position: absolute;
+	font-size: 12px;
+	border: 1px solid black;
+	right: 40px;
+
+	.color {
+		position: relative;
+		width: 15px;
+		height: 15px;
+
+		&:not(:first-child) {
+			border-top: 1px solid black;
+		}
+
+		.percent-line {
+			width: 5px;
+			height: 1px;
+			background-color: black;
+			position: absolute;
+			bottom: -1px;
+			right: -5px;
+		}
+
+		.percent-label {
+			position: absolute;
+			left: 25px;
+			top: 8px;
+		}
+	}
+}

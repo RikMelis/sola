@@ -1,6 +1,7 @@
 import React from 'react';
 import Strecke from './Strecke.js';
 import {strecken as streckenData} from './database.js';
+import Legend from './Legend.js';
 import './App.scss';
 
 export const UNCERTAINTY_RATE = 0.15;
@@ -176,6 +177,7 @@ export default class App extends React.Component {
                     changePositionID={id => this.setState({live: false, positionID: id})}
                     recalculateStreckenTimes={() => this.recalculateStreckenTimes()}
                 />
+                <Legend/>
             </div>
         );
     }

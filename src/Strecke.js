@@ -24,9 +24,11 @@ export default class Strecke extends React.Component {
 
         return (
             <div className={'strecke'}>
-                {runner}
-                <Pace strecke={strecke} recalculateStreckenTimes={recalculateStreckenTimes}/>
-                <div>{convertMinsToHrsMins(pace * distance)}</div>
+                <div className={'info'}>
+                    {runner}
+                    <Pace strecke={strecke} recalculateStreckenTimes={recalculateStreckenTimes}/>
+                    <div>{convertMinsToHrsMins(pace * distance)}</div>
+                </div>
                 <Slider
                     value={positionID}
                     changePositionID={changePositionID}

@@ -3,7 +3,7 @@ import Profile from './Profile.js';
 import {UNCERTAINTY_RATE} from './App.js'
 import './Slider.scss';
 
-function convertMinsToClock(mins) {
+const convertMinsToClock = (mins) => {
     let h = Math.floor(mins / 60);
     let m = Math.floor(mins % 60);
     h = h < 10 ? '0' + h : h;
@@ -133,7 +133,7 @@ export default class Slider extends React.Component {
 					ref={bar => { this.sliderLine = bar; }}
 					onMouseDown={event => this.handleMouseDownOnDot(event)}
 					>
-	                <Profile strecke={strecke} sliderLineRef={this.sliderLine}/>
+	                <Profile strecke={strecke}/>
 					<div
 						className={'slider-position'}
 						style={{left: `${value / 10}%`}}
