@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ad45c787bfd69cf328dc63fe162a6cd0",
+    "revision": "d28691c4c5611575550c9a760ce79547",
     "url": "/sola/index.html"
   },
   {
-    "revision": "c1cd541ff058bc3a81be",
-    "url": "/sola/static/css/main.0b8101bc.chunk.css"
+    "revision": "f9581c2c17e824bd502c",
+    "url": "/sola/static/css/main.ecd1c36a.chunk.css"
   },
   {
-    "revision": "146906bbc55ccde847cd",
-    "url": "/sola/static/js/2.98d18a7b.chunk.js"
+    "revision": "f9dcf0ff021a91f2e89e",
+    "url": "/sola/static/js/2.c49cf7a3.chunk.js"
   },
   {
-    "revision": "c1cd541ff058bc3a81be",
-    "url": "/sola/static/js/main.2f4a2105.chunk.js"
+    "revision": "f9581c2c17e824bd502c",
+    "url": "/sola/static/js/main.ca60f511.chunk.js"
   },
   {
     "revision": "95701e99678a754dc228",
@@ -80,8 +80,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sola/static/media/map14.8bf562a2.png"
   },
   {
-    "revision": "6ed931668ce60d6edd24d4cec14cb038",
-    "url": "/sola/static/media/rik.6ed93166.jpeg"
+    "revision": "3b12a5bd507ebb1a8dd8698082324819",
+    "url": "/sola/static/media/pencil.3b12a5bd.png"
   },
   {
     "revision": "e6b7d84e0bcc1fbff8165aae32f12d8c",
