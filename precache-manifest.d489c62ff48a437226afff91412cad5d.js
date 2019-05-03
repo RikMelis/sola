@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d28691c4c5611575550c9a760ce79547",
+    "revision": "e9f10498660a6072430fa4dd9feccacb",
     "url": "/sola/index.html"
   },
   {
-    "revision": "f9581c2c17e824bd502c",
-    "url": "/sola/static/css/main.ecd1c36a.chunk.css"
+    "revision": "c2afd5b0ac2cb8c07970",
+    "url": "/sola/static/css/main.5c535c58.chunk.css"
   },
   {
     "revision": "f9dcf0ff021a91f2e89e",
     "url": "/sola/static/js/2.c49cf7a3.chunk.js"
   },
   {
-    "revision": "f9581c2c17e824bd502c",
-    "url": "/sola/static/js/main.ca60f511.chunk.js"
+    "revision": "c2afd5b0ac2cb8c07970",
+    "url": "/sola/static/js/main.94a4c1ab.chunk.js"
   },
   {
     "revision": "95701e99678a754dc228",
