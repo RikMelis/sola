@@ -5,4 +5,4 @@ This web app helps our relay team to discover the tracks for the SOLA-stafette r
 
 Live at: https://rikmelis.github.io/sola/
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Screenshot")
+![Alt text](/screenshot.jpg?raw=true "Screenshot")
